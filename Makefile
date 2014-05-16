@@ -1,5 +1,5 @@
 
--include .local
+-include .hpcstack_local
 
 PREFIX ?= /opt/hpcstack
 
