@@ -1,0 +1,56 @@
+************
+* HPCStack *
+************
+
+Copyright (C) 2014 Huawei
+
+Author: Lauri Leukkunen <lauri.leukkunen@huawei.com>
+License: MIT
+
+
+HPCStack provides the necessary updates to various build tools to
+facilitate software development on RHEL / CentOS 6.5.
+
+
+Hardware Requirements
+=====================
+This software stack requires Tesla K20 or higher GPU and Mellanox
+ConnectX-3 VPI InfiniBand adapters. ConnectX-3 EN (ethernet) adapters are
+not supported.
+
+
+Usage
+=====
+
+First make sure you have installed these pre-requisites in this order:
+
+0. Install RHEL/CentOS 6.5 using the Software Development Workstation option.
+   Make sure to disable SELinux and iptables. Also disable IOMMU by
+   adding "iommu=off intel_iommu=off" to kernel command line in
+   /boot/grub/grub.conf (without the quotes).
+1. EPEL rpm repository: https://fedoraproject.org/wiki/EPEL
+2. NVIDIA CUDA 6.0, use the RPM for RHEL 6.5 from
+   https://developer.nvidia.com/cuda-downloads#linux
+3. Mellanox MLNX_OFED_LINUX v2.x for RHEL 6.5 from
+   http://www.mellanox.com/page/products_dyn?product_family=26&mtag=linux_sw_drivers
+4. Mellanox OFED GPUDirect RDMA Beta from
+   http://www.mellanox.com/page/products_dyn?product_family=116&mtag=gpudirect
+
+After these are installed and operational you can proceed to building HPCStack.
+This is done as follows:
+
+1. cd /path/to/hpcstack
+2. echo "PREFIX = /where/you/want/to/install/hpcstack" > .hpcstack_local
+3. make -j
+
+After build completes you must still add the necessary paths to .bashrc or
+wherever you keep them:
+
+export LD_LIBRARY_PATH=/path/to/installed/hpcstack/lib:$LD_LIBRARY_PATH
+export PATH=/path/to/installed/hpcstack/bin:$PATH
+
+Start a new shell and observe that for example libtool is picked up from the
+correct location.
+
+You have successfully completed HPCStack installation.
+
