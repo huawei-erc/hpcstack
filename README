@@ -43,10 +43,9 @@ This is done as follows:
 2. echo "PREFIX = /where/you/want/to/install/hpcstack" > .hpcstack_local
 3. make -j
 
-After build completes you must still add the necessary paths to .bashrc or
+After build completes you must still add the necessary path to .bashrc or
 wherever you keep them:
 
-export LD_LIBRARY_PATH=/path/to/installed/hpcstack/lib:$LD_LIBRARY_PATH
 export PATH=/path/to/installed/hpcstack/bin:$PATH
 
 Start a new shell and observe that for example libtool is picked up from the
