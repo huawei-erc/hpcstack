@@ -25,7 +25,6 @@ SOURCE_FILE ?= $(PACKAGE_NAME)-$(PACKAGE_VER).tar.gz
 SOURCE_URL ?= http://ftp.gnu.org/pub/gnu/$(PACKAGE_NAME)/$(SOURCE_FILE)
 BUILD_STYLE ?= autotools
 FETCH ?= wget
-PREFIX ?= $(HPCSTACK_DIR)
 
 PATH := $(HPCSTACK_DIR)/bin:$(PATH)
 export PATH
@@ -49,7 +48,7 @@ $(src_full_path):
 	$(FETCH) $(SOURCE_URL)
 
 $(depends_targets): %.depends:
-	flock -e $*/.hpcstack_lock -c '$(MAKE) -C $* install'
+	@flock -e $*/.hpcstack_lock -c '$(MAKE) -C $* install'
 
 depends: $(depends_targets)
 
@@ -126,7 +125,7 @@ build_targets = $(patsubst %,build-%,$(dirs))
 clean_targets = $(patsubst %,clean-%,$(dirs))
 
 $(build_targets): build-%:
-	flock -e $*/.hpcstack_lock -c '$(MAKE) -C $* install'
+	@flock -e $*/.hpcstack_lock -c '$(MAKE) -C $* install'
 
 $(clean_targets): clean-%:
 	$(MAKE) -C $* clean
