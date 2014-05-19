@@ -98,11 +98,11 @@ install: .hpcstack_autotools_install
 clean: .hpcstack_autotools_clean
 endif
 ifeq ("$(BUILD_STYLE)","custom")
-.hpcstack_custom_build:
+.hpcstack_custom_build: .hpcstack_sources
 	$(MAKE) custom_build
 	@touch .hpcstack_custom_build
 
-.hpcstack_custom_install:
+.hpcstack_custom_install: .hpcstack_custom_build
 	$(MAKE) custom_install
 	@touch .hpcstack_custom_install
 

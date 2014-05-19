@@ -1,6 +1,6 @@
 BUILD_STYLE = category
 dirs = autoconf automake
-dirs += pkg-config
+dirs += pkg-config cmake
 
 include ../build.mk
 
