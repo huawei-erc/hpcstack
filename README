@@ -27,7 +27,8 @@ First make sure you have installed these pre-requisites in this order:
 0. Install RHEL/CentOS 6.5 using the Software Development Workstation option.
    Make sure to disable SELinux and iptables. Also disable IOMMU by
    adding "iommu=off intel_iommu=off" to kernel command line in
-   /boot/grub/grub.conf (without the quotes).
+   /boot/grub/grub.conf (without the quotes). Finally, be sure to uninstall
+   xorg-x11-glamor package (it makes X server unstable).
 1. EPEL rpm repository: https://fedoraproject.org/wiki/EPEL
 2. NVIDIA CUDA 6.0, use the RPM for RHEL 6.5 from
    https://developer.nvidia.com/cuda-downloads#linux
