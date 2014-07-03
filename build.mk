@@ -65,7 +65,7 @@ depends: $(depends_targets)
 	@(set -e; cd $(SRC_DIR); \
 	if [ ! -d ../../patches ]; then exit 0; fi; \
 	for f in $$(find ../../patches -name *.patch | sort); do \
-		patch < $$f; \
+		patch -Np1 < $$f; \
 	done)
 	@touch .hpcstack_sources
 
