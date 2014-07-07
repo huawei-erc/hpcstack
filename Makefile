@@ -6,7 +6,7 @@ PREFIX ?= /opt/hpcstack
 TOPDIR = $(CURDIR)
 export TOPDIR
 
-dirs = tools
+dirs = tools libs compilers
 
 
 default: build

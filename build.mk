@@ -26,11 +26,15 @@ SOURCE_URL ?= http://ftp.gnu.org/pub/gnu/$(PACKAGE_NAME)/$(SOURCE_FILE)
 BUILD_STYLE ?= autotools
 FETCH ?= wget
 
+PKG_CONFIG_PATH = $(HPCSTACK_DIR)/share/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
 PATH := $(HPCSTACK_DIR)/bin:$(PATH)
 export PATH
+export PKG_CONFIG_PATH
+LD_LIBRARY_PATH = $(HPCSTACK_DIR)/lib64:$(HPCSTACK_DIR)/lib
+export LD_LIBRARY_PATH
 
 CFLAGS = -I$(HPCSTACK_DIR)/include -I/usr/include
-LDFLAGS = -L$(HPCSTACK_DIR)/lib -Wl,-rpath,$(HPCSTACK_DIR)/lib
+LDFLAGS = -L$(HPCSTACK_DIR)/lib64:$(HPCSTACK_DIR)/lib -Wl,-rpath,$(HPCSTACK_DIR)/lib64:$(HPCSTACK_DIR)/lib
 CPPFLAGS = -I$(HPCSTACK_DIR)/include
 
 .DEFAULT_GOAL := build

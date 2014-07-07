@@ -1,5 +1,5 @@
 PACKAGE_NAME = gcc
-PACKAGE_VER = 4.9.0
+PACKAGE_VER = 4.8.2
 SOURCE_FILE = $(PACKAGE_NAME)-$(PACKAGE_VER).tar.bz2
 
 DEPENDS = ../mpc ../mpfr ../gmp ../../tools/libtool ../isl
