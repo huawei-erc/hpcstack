@@ -47,7 +47,9 @@ This is done as follows:
 After build completes you must still add the necessary path to .bashrc or
 wherever you keep them:
 
-export PATH=/path/to/installed/hpcstack/bin:$PATH
+HPCSTACKDIR=/path/to/installed/hpcstack
+export PATH=$HPCSTACKDIR/bin:$PATH
+export LD_LIBRARY_PATH=$HPCSTACKDIR/lib64:$HPCSTACKDIR/lib:$LD_LIBRARY_PATH
 
 Start a new shell and observe that for example libtool is picked up from the
 correct location.
