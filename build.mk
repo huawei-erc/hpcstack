@@ -80,7 +80,8 @@ depends: $(depends_targets)
 
 .hpcstack_autotools_config: .hpcstack_autotools_autogen
 	(set -e; cd $(SRC_DIR); \
-	./configure CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" --prefix=$(PREFIX))
+	./configure CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" --prefix=$(PREFIX) $(EXTRA_CONFIGURE_OPTIONS); \
+	)
 	@touch .hpcstack_autotools_config
 
 .hpcstack_autotools_build: .hpcstack_autotools_config
